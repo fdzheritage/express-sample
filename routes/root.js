@@ -2,7 +2,7 @@ const path = require("path");
 const router = require('express').Router();
 
 router.get("/", (req, res) => {
-	return res.send("Home");
+	return res.render('root', {title: 'First express app'});
 });
 
 router.get("/inc", (req, res) => {

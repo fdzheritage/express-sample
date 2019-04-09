@@ -8,6 +8,9 @@ const numbersRouter = require('./routes/numbers.js');
 
 const port = 9000;
 
+app.set('view engine','hbs');
+
+
 app.use(cookieParser());
 
 app.use("/inc", express.static(path.join(__dirname, "inc")));
