@@ -2,10 +2,15 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const app = express();
+const rootRouter = require('./routes/root.js');
 const usersRouter = require('./routes/users.js');
+const numbersRouter = require('./routes/numbers.js');
+
 const port = 9000;
 
 app.use(cookieParser());
+
+app.use("/inc", express.static(path.join(__dirname, "inc")));
 
 app.use((req, res, next) => {
 	if (req.cookies.vcount == undefined) {
@@ -18,16 +23,12 @@ app.use((req, res, next) => {
 	next();
 });
 
+
+app.use('/', rootRouter);
 app.use('/users', usersRouter);
+app.use('/numbers', numbersRouter);
 
-app.get("/inc", (req, res) => {
-	return res.send(path.join(__dirname, "inc"));
-});
-app.use("/inc", express.static(path.join(__dirname, "inc")));
 
-app.get("/hello", (req, res) => {
-	return res.send(req.vcount + "<br>hey there");
-});
 
 app.listen(port, function() {
 	return console.log("Sample App " + port + "!");

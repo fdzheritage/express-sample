@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-router.get("/numbers/:from-:to", (req, res) => {
+router.get("/:from-:to", (req, res) => {
 	let a = parseInt(req.params.from);
 	let b = parseInt(req.params.to);
 
