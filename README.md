@@ -1,2 +1,0 @@
-# express-sample
-Express Sample
