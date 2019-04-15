@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const dbLayer = require("./config/db");
 
-const rootRouter = require("./routes/root");
+const pagesRoutes = require("./routes/pages");
 const usersRouter = require("./routes/users");
 const numbersRouter = require("./routes/numbers");
 
@@ -50,7 +50,7 @@ app.use((req, res, next) => {
 	next();
 });
 app.use("/users", usersRouter);
-app.use("/", rootRouter);
+app.use("/", pagesRoutes);
 
 app.use("/numbers", numbersRouter);
 
